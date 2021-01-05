@@ -14,33 +14,18 @@ int main(){
 float a[n];
  for(int i=0;i<n;i++)
     cin>>a[i];
-long long sum=0,res1=0,res2=0;
-  int i=0;
-  while(i<n){
-        long long s=a[i];
-    if(s%x==0){
-        while(s%x==0&&i<n-1){
-            i++;
-            s+=a[i];
-        }
-    }
-
-    res1+=ceil(float(s)/float(x));
-    i++;
-
-  }
-  int j=0;
-  while(j<n){
-        long long s=a[j];
-    if(s%x!=0){
-        while(s%x!=0&&j<n-1){
-            j++;
-            s+=a[j];
-        }
-    }
-    j++;
-    res2+=ceil(float(s)/float(x));
-  }
-  cout<<res2<<" "<<res1<<endl;
+  int mi=0,ma=0;
+     for(int i=0;i<n;i++){
+         mi+=a[i];
+         if(a[i]%x==0)
+             ma+=a[i]/x;
+         else
+             ma+=a[i]/x+1;
+     }
+     if(mi%x==0)
+         mi=mi/x;
+     else
+       mi+=mi/x+1;
+  cout<<mi<<" "<<ma<<endl;
  }
 }
