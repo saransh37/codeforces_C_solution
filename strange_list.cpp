@@ -1,3 +1,5 @@
+
+
 #include<iostream>
 #include<bits/stdc++.h>
 #include<algorithm>
@@ -13,30 +15,20 @@ int main(){
    int n,x;
    cin>>n>>x;
    vector<long long>v(n);
+   vector<int>t(n,1);
    int y;
    for(int i=0;i<n;i++){
     cin>>v[i];
-
    }
    long long res=0;
    int i=0;
-   while(1){
-    if(*v.begin()%x==0){
-        int val=x;
-        long long tem=v[i]/x;
-        while(val--){
-            v.push_back(tem);
-        }
-        res+=v[i];
-        v.erase(v.begin());
-
-    }
-    else
-        break;
+   while(v[i]%x==0){
+    v.push_back(v[i]/x);
+    t.push_back(t[i]*x);
+    i++;
    }
-   for(auto m:v){
-    res+=m;
-   }
+   for(int i=0;i<v.size();i++)
+    res+=v[i]*t[i];
 
    cout<<res<<"\n";
  }
